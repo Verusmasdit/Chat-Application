@@ -34,6 +34,12 @@ After installation, check with:
 
 ---
 
+## 🚀 Live Demo
+
+[👉 Try it Live](#) *(https://unifiedchat-application.vercel.app)*
+
+---
+
 📂 Project Setup
 
 1. Create a new folder for your project, e.g. chat-app.

@@ -1,0 +1,108 @@
+/* styles.css - modern, responsive, glass look */
+:root{
+  --bg1: linear-gradient(135deg,#0f1724,#18304a);
+  --card: rgba(255,255,255,0.06);
+  --muted: rgba(255,255,255,0.7);
+  --accent: #4e9eff;
+  --success: #39d98a;
+}
+
+*{box-sizing:border-box}
+html,body,#app{height:100%}
+body{
+  margin:0;
+  font-family:Inter, Poppins, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg1);
+  color:#fff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.chat-container{
+  display:flex;
+  width:95%;
+  max-width:1200px;
+  height:88vh;
+  margin:3vh auto;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 12px 40px rgba(0,0,0,0.6);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.14));
+}
+
+/* Sidebar */
+.sidebar{
+  width:280px;
+  padding:18px;
+  background:rgba(0,0,0,0.2);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.brand{ font-size:18px; display:flex; flex-direction:column; gap:4px;}
+.brand strong{ font-size:20px; letter-spacing:0.6px; }
+.muted{ color:var(--muted); font-size:13px; }
+.small{ font-size:12px }
+.create-room{ display:flex; gap:8px; }
+.create-room input{ flex:1; padding:8px 10px; border-radius:8px; border: none; outline:none; background: rgba(255,255,255,0.03); color:inherit }
+.create-room button{ padding:8px 10px;border-radius:8px;background:var(--accent);border:none;cursor:pointer }
+
+.rooms-list{ overflow:auto; flex:1; margin-top:8px; display:flex; flex-direction:column; gap:8px }
+.room-item{
+  display:flex; justify-content:space-between; align-items:center;
+  background:rgba(255,255,255,0.02); padding:8px; border-radius:10px;
+}
+.room-item .rmeta{ display:flex; flex-direction:column }
+.room-item .rname{ font-weight:600}
+.room-item .rcount{ font-size:12px}
+.joinBtn{ border:none; background:transparent; color:var(--accent); padding:8px 12px; cursor:pointer; border-radius:8px }
+
+/* Sidebar footer */
+.sidebar-footer { display:flex; justify-content:space-between; align-items:center; gap:8px; padding-top:8px; border-top:1px solid rgba(255,255,255,0.03) }
+.me { font-size:13px }
+
+/* Chat area */
+.chat-area{ flex:1; display:flex; flex-direction:column; }
+.chat-header{ display:flex; justify-content:space-between; align-items:center; padding:16px; border-bottom:1px solid rgba(255,255,255,0.03) }
+.chat-header h3{ margin:0; }
+.messages{ padding:18px; overflow:auto; display:flex; flex-direction:column; gap:10px; background:
+linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.06)); flex:1 }
+
+/* message bubbles */
+.message-line{ display:flex; }
+.bubble{
+  max-width:75%;
+  padding:10px 14px;
+  border-radius:12px;
+  background: rgba(255,255,255,0.02);
+  animation: slideIn .18s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+.message-line.outgoing{ justify-content:flex-end; }
+.message-line.outgoing .bubble{ background: linear-gradient(90deg, #2b6ef6, #4e9eff); color: #fff; }
+.meta{ font-size:12px; color:var(--muted); margin-bottom:6px; display:flex; gap:8px; align-items:center }
+.author{ font-weight:700; color: #fff; opacity:0.95; }
+.content{ white-space:pre-wrap; word-break:break-word; font-size:14px; line-height:1.35 }
+
+.input-area{ display:flex; gap:10px; padding:14px; border-top:1px solid rgba(255,255,255,0.03); align-items:center }
+.input-area input{ flex:1; padding:12px 14px; border-radius:12px; border:none; outline:none; background: rgba(255,255,255,0.03); color:inherit }
+.input-area button{ padding:10px 16px; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer }
+
+.modal{
+  position:fixed; inset:0; display:flex; justify-content:center; align-items:center;
+  background:linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45));
+  z-index:99;
+}
+.card.small{ background:rgba(255,255,255,0.03); padding:22px; border-radius:12px; width:320px; text-align:center; box-shadow:0 12px 30px rgba(0,0,0,0.6) }
+.card input{ width:100%; padding:10px; margin:12px 0; border-radius:8px; border:none; background:rgba(255,255,255,0.02); color:inherit }
+
+/* small screens */
+@media (max-width:800px){
+  .chat-container{ flex-direction:column; height:95vh; width:98vw }
+  .sidebar{ width:100%; flex-direction:row; overflow:auto; gap:10px; padding:10px }
+  .chat-header { padding:10px }
+  .messages { padding:12px }
+}
+
+/* animations */
+@keyframes slideIn { from { opacity:0; transform: translateY(8px) } to { opacity:1; transform: translateY(0) } }

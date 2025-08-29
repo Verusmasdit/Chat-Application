@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UnifiedChat — Real-time</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Welcome / username modal -->
+    <div class="modal" id="usernameModal" aria-hidden="false">
+      <div class="card small">
+        <h2>Welcome to UnifiedChat</h2>
+        <p>Choose a unique username to continue</p>
+        <input id="usernameInput" placeholder="Enter username" maxlength="30" />
+        <div class="row">
+          <button id="usernameBtn">Join</button>
+        </div>
+        <p class="muted">You may create or join rooms. Keep usernames unique.</p>
+      </div>
+    </div>
+
+    <div class="chat-container">
+      <aside class="sidebar">
+        <div class="brand">
+          <strong>UnifiedChat</strong>
+          <span class="muted">Realtime rooms</span>
+        </div>
+
+        <div class="create-room">
+          <input id="newRoomInput" placeholder="Create room (e.g., Study)" maxlength="40" />
+          <button id="createRoomBtn">Create</button>
+        </div>
+
+        <div class="rooms-list" id="roomsList">
+          <!-- rooms populated here -->
+        </div>
+
+        <div class="sidebar-footer">
+          <div id="meInfo" class="me">Not signed in</div>
+          <button id="toggleTheme">Toggle Theme</button>
+        </div>
+      </aside>
+
+      <main class="chat-area">
+        <header class="chat-header">
+          <div>
+            <h3 id="roomTitle">—</h3>
+            <div id="roomUsers" class="muted small">0 users</div>
+          </div>
+          <div class="header-right">
+            <div id="notifications" class="muted small">Ready</div>
+          </div>
+        </header>
+
+        <section class="messages" id="messages"></section>
+
+        <footer class="input-area">
+          <input id="messageInput" placeholder="Type a message (Enter to send). Use **bold**, *italic*, and links." maxlength="2000" />
+          <button id="sendBtn">Send</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <template id="roomTemplate">
+    <div class="room-item">
+      <div class="rmeta">
+        <div class="rname"></div>
+        <div class="rcount muted small"></div>
+      </div>
+      <button class="joinBtn">Join</button>
+    </div>
+  </template>
+
+  <template id="messageTemplate">
+    <div class="message-line">
+      <div class="bubble">
+        <div class="meta"><span class="author"></span> • <span class="time"></span></div>
+        <div class="content"></div>
+      </div>
+    </div>
+  </template>
+
+  <script src="client.js"></script>
+</body>
+</html>
